@@ -27,6 +27,21 @@ Simply paste a set of dialogue from your planning document into a bubble -- the 
 
 Easily export your bubbles for use in MSYT files, NX Editor, or MSBT Editor. Select your game and format of choice, then hit the button or keyboard shortcut to copy the syntax to the clipboard. Never type a `\n` again.
 
+### Local folder explorer
+
+Open a local folder in the sidebar to browse its contents in a VS Code-style tree. The browser will keep the folder local to your session; nothing is uploaded.
+
+### Extraction helper
+
+Use `scripts/extract_sarc.py` to unpack a UKMM SARC into a real folder tree. Open the resulting folder in Bubble Wrap to browse the extracted entries in the sidebar tree. The script keeps nested paths intact and automatically unwraps Yaz0 members. If the archive is Zstd-compressed, install the Python dependency first:
+
+```bash
+python -m pip install zstandard
+python scripts/extract_sarc.py Msg_EUfr.product.sarc outdir
+```
+
+Bubble Wrap can also open a `.zip` directly and show its internal tree, so a mod archive such as `AppData\Local\ukmm\wiiu\mods\{mod_name}.zip` can be browsed without extracting it first.
+
 ## Install
 
 Bubble Wrap is a web app: no installation is required, and it works on all platforms. However, if your browser supports it, you may install it offline.

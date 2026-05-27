@@ -30,6 +30,28 @@
             </button>
             <a class="description" id="export-docs" href="" target="_blank"></a>
           </div>
+          <div class="sidebar-section workspace-section">
+            <div class="workspace-section-header">
+              <h2>Workspace</h2>
+              <div class="workspace-section-actions">
+                <button class="workspace-open-btn" id="open-folder-btn" title="Open a local folder in a VS Code-style explorer">
+                  Open folder
+                </button>
+                <button class="workspace-open-btn" id="open-zip-btn" title="Open a local ZIP archive in the workspace tree">
+                  Open zip
+                </button>
+              </div>
+            </div>
+            <p class="description workspace-description" id="workspace-status">
+              Open a local folder or ZIP archive to browse its contents in a VS Code-style tree.
+            </p>
+            <div class="workspace-tree" id="workspace-tree" aria-label="Workspace folder tree"></div>
+            <div class="workspace-preview" id="workspace-preview" aria-label="File preview"></div>
+          </div>
+
+          <!-- Fallback input used when showDirectoryPicker() is unavailable -->
+          <input id="folder-file-input" type="file" webkitdirectory directory multiple style="display:none" />
+          <input id="zip-file-input" type="file" accept=".zip,application/zip" style="display:none" />
           <div class="sidebar-section">
             <h2>About</h2>
             <p class="warning-modal description">

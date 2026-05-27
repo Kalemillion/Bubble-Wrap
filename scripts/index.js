@@ -1,4 +1,5 @@
 import BubbleManager from "../scripts/BubbleManager.js";
+import "./FolderExplorer.js";
 import TestSuite from "./TestSuite.js";
 
 const devMode = window.location.host == "127.0.0.1:3000";
