@@ -222,6 +222,65 @@ export default class BubbleUtil {
       newSpan.setAttribute("data-pause", args.pause);
       newSpan.setAttribute("title", `Pause (${args.pause}${isNaN(args.pause) ? "" : " frames"})`);
     }
+    // Support custom raw control objects (render as readable selector)
+    if (args.rawControl) {
+      // Known mappings for two_hundred_one.field_2 signatures
+      const CONTROL_FIELD2_MAP = {
+        "1,0,0,0": [{ value: "le_un", label: "LE/UN" }],
+        "1,5,5,1": [{ value: "ellos_unos", label: "ELLOS/UNOS" }]
+      };
+
+      newSpan.setAttribute("data-control-kind", "raw");
+      newSpan.dataset.control = JSON.stringify(args.rawControl);
+      const nodeSelectElement = document.createElement("span");
+      nodeSelectElement.classList.add("node-select");
+      const select = document.createElement("select");
+      select.classList.add("control-select");
+      // default empty option
+      const emptyOpt = document.createElement("option");
+      emptyOpt.value = "";
+      emptyOpt.textContent = "∅";
+      select.appendChild(emptyOpt);
+
+      try {
+        const dyn = args.rawControl.two_hundred_one?.dynamic?.[1]?.field_2;
+        if (Array.isArray(dyn)) {
+          const sig = dyn.join(",");
+          const mapped = CONTROL_FIELD2_MAP[sig];
+          if (mapped && mapped.length) {
+            for (const opt of mapped) {
+              const o = document.createElement("option");
+              o.value = opt.value;
+              o.textContent = opt.label;
+              select.appendChild(o);
+            }
+          } else {
+            // Fallback: show a humanized representation
+            const o = document.createElement("option");
+            o.value = JSON.stringify(dyn);
+            o.textContent = JSON.stringify(dyn);
+            select.appendChild(o);
+          }
+        } else {
+          const o = document.createElement("option");
+          o.value = JSON.stringify(args.rawControl);
+          o.textContent = "control";
+          select.appendChild(o);
+        }
+      } catch (e) {
+        const o = document.createElement("option");
+        o.value = JSON.stringify(args.rawControl);
+        o.textContent = "control";
+        select.appendChild(o);
+      }
+
+      select.addEventListener("change", (e) => {
+        newSpan.dataset.selected = e.target.value;
+      });
+      nodeSelectElement.appendChild(select);
+      newSpan.appendChild(nodeSelectElement);
+      return newSpan;
+    }
     let nodeSelectElement = document.createElement("span");
     nodeSelectElement.classList.add("node-select");
     newSpan.addEventListener("click", callback);

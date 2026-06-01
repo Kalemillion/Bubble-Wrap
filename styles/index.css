@@ -741,6 +741,33 @@ span[data-pause] .node-select:hover::before {
   width: 0;
 }
 
+/* Controls rendered from raw control objects (compact selector inside bubbles) */
+span[data-control-kind="raw"] {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.35rem;
+}
+
+span[data-control-kind="raw"] .node-select {
+  display: inline-block;
+}
+
+/* Compact select inside bubble text */
+.bubble-content .control-select {
+  height: 1.25rem;
+  padding: 0 0.35rem;
+  font-size: 0.8rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+  color: inherit;
+  border-radius: 0.25rem;
+}
+
+.bubble-content .control-select:hover {
+  border-color: rgba(255,255,255,0.18);
+}
+
 .bubble-btn-container p {
   padding: 0.5rem;
   margin: 0;
