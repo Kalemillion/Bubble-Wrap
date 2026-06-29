@@ -1,6 +1,7 @@
 import MSYTParser from "../MSYTParser.js";
 import TOTKMSBTEditorParser from "../TOTKMSBTEditorParser.js";
 import TOTKNXEditorParser from "../TOTKNXEditorParser.js";
+import UKMMParser from "../UKMMParser.js";
 
 /** A format available to export in. */
 export default {
@@ -10,6 +11,13 @@ export default {
     docsLabel: "Learn how to use MSYT output",
     docsLink: "https://zeldamods.org/wiki/Help:Text_modding",
     parser: MSYTParser
+  },
+  UKMM: {
+    id: "UKMM",
+    optionLabel: "BOTW (UKMM)",
+    docsLabel: "Learn about UKMM modding",
+    docsLink: "https://github.com/NiceneNerd/ukmm",
+    parser: UKMMParser
   },
   TOTKNXEditor: {
     id: "TOTKNXEditor",

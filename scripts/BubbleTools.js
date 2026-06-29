@@ -188,8 +188,8 @@ export default class BubbleTools {
         // Check that a bubble is selected
         const bubbleElement = document.activeElement?.closest(".bubble");
         if (!bubbleElement) return false;
-        // Animation control nodes are dialogue-only
-        if (BubbleManager.type.className != "dialogue") return false;
+        // Animation control nodes are dialogue / signboard only
+        if (!["dialogue", "signboard"].includes(BubbleManager.type.className)) return false;
         // Repeated set of title button is for switching bubbles
         const selectedBubble = BubbleManager.getBubbleFromNode(bubbleElement);
         const titleElement = BubbleTools.setAnimationBtnElement.querySelector(".select-title");
@@ -254,8 +254,8 @@ export default class BubbleTools {
         // Check that a bubble is selected
         const bubbleElement = document.activeElement?.closest(".bubble");
         if (!bubbleElement) return false;
-        // Sound control nodes are dialogue-only
-        if (BubbleManager.type.className != "dialogue") return false;
+        // Sound control nodes are dialogue / signboard only
+        if (!["dialogue", "signboard"].includes(BubbleManager.type.className)) return false;
         // Repeated set of title button is for switching bubbles
         const selectedBubble = BubbleManager.getBubbleFromNode(bubbleElement);
         const titleElement = BubbleTools.setSoundBtnElement.querySelector(".select-title");

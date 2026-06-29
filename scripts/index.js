@@ -1,4 +1,5 @@
 import BubbleManager from "../scripts/BubbleManager.js";
+import UKMMImportUI from "./UKMMImportUI.js";
 import TestSuite from "./TestSuite.js";
 
 const devMode = window.location.host == "127.0.0.1:3000";
@@ -6,6 +7,7 @@ const devMode = window.location.host == "127.0.0.1:3000";
 BubbleManager.template = await fetch("components/bubble.html");
 BubbleManager.template = await BubbleManager.template.text();
 new BubbleManager();
+UKMMImportUI.init();
 
 // Allow bubbles to define their own drop behavior
 document.addEventListener("drop", (e) => e.preventDefault());

@@ -39,6 +39,8 @@ export default class Bubble {
     this.lineCount = 0;
     this.animation = "none";
     this.sound = "none";
+    /** @type {Object|null} Determiner data: {selected: number, options: string[]} or null. */
+    this.determiner = null;
 
     // Populate bubble with first line
     const initLine = this.initializeContents(text);
@@ -169,6 +171,7 @@ export default class Bubble {
     const initLine = document.createElement("div");
     initLine.textContent = text || "";
     this.bubbleContentElement.appendChild(initLine);
+    this.determiner = null;
     return initLine;
   }
 

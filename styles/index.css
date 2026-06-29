@@ -732,3 +732,227 @@ span[data-pause] .node-select:hover::before {
     opacity: 1;
   }
 }
+
+/* === UKMM Import Side Panel === */
+
+.ukmm-import-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 0;
+  min-width: 0;
+  overflow: hidden;
+  background: var(--sidebar-color);
+  border-left: 1px solid var(--button-border-color);
+  transition: flex-basis var(--transition-duration) var(--transition-function), width var(--transition-duration) var(--transition-function);
+}
+
+.ukmm-import-panel.visible {
+  flex: 0 0 20rem;
+  width: 20rem;
+}
+
+.ukmm-import-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--button-border-color);
+  flex-shrink: 0;
+}
+
+.ukmm-import-title {
+  flex: 1;
+  margin: 0;
+  font-size: var(--ui-normal-text-size);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ukmm-import-count {
+  font-size: var(--ui-small-text-size);
+  color: hsl(0, 0%, 50%);
+  white-space: nowrap;
+}
+
+.ukmm-import-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: hsl(0, 0%, 40%);
+}
+
+.ukmm-import-close:hover {
+  color: var(--page-text-color);
+}
+
+.ukmm-import-change {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--button-border-color);
+  border-radius: 0.25rem;
+  background: var(--button-bg-color);
+  font-size: var(--ui-small-text-size);
+  cursor: pointer;
+  color: var(--page-text-color);
+  white-space: nowrap;
+}
+
+.ukmm-import-change:hover {
+  background: var(--button-hover-bg-color);
+}
+
+.ukmm-import-tree {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+  min-width: 18rem;
+}
+
+.ukmm-section {
+  margin-bottom: 0.25rem;
+}
+
+.ukmm-section-summary {
+  padding: 0.375rem 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: var(--ui-small-text-size);
+  font-weight: bold;
+  user-select: none;
+}
+
+.ukmm-subsection {
+  margin-left: 1rem;
+}
+
+.ukmm-subsection .ukmm-section-summary {
+  font-weight: normal;
+  font-size: 0.7rem;
+}
+
+.ukmm-section-summary:hover {
+  background: var(--button-hover-bg-color);
+}
+
+.ukmm-entry {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.25rem 0.5rem 0.25rem 1.5rem;
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: var(--ui-small-text-size);
+  cursor: pointer;
+  border-radius: 0.25rem;
+  color: var(--page-text-color);
+}
+
+.ukmm-entry:hover {
+  background: var(--button-hover-bg-color);
+  color: var(--action-color);
+}
+
+.ukmm-entry:active {
+  background: var(--button-active-bg-color);
+}
+
+.ukmm-entry-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ukmm-entry-count {
+  flex-shrink: 0;
+  font-size: 0.65rem;
+  color: hsl(0, 0%, 55%);
+  font-variant-numeric: tabular-nums;
+}
+
+/* === Bubble property badge (animation / sound indicator) === */
+
+.bubble-property-badge {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.5rem;
+  z-index: 5;
+  font-size: 0.55rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.25rem;
+  background: hsl(210, 40%, 85%);
+  color: hsl(210, 60%, 25%);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.bubble:focus-within .bubble-property-badge {
+  opacity: 1;
+}
+
+/* === Determiner UI (article variant selector to the left of bubble) === */
+
+.determiner-ui {
+  position: absolute;
+  top: 0.25rem;
+  left: -5.5rem;
+  z-index: 5;
+  width: 5rem;
+}
+
+.determiner-select {
+  width: 100%;
+  font-size: 0.65rem;
+  padding: 0.1rem 0.15rem;
+  border: 1px solid var(--button-border-color);
+  border-radius: 0.25rem;
+  background: var(--button-bg-color);
+  color: var(--page-text-color);
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity var(--transition-duration);
+}
+
+.determiner-select:hover {
+  opacity: 1;
+}
+
+.bubble:not(:focus-within) .determiner-select {
+  opacity: 0.3;
+}
+
+/* === UKMM Import Error Toast === */
+
+.ukmm-import-error {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  z-index: 1100;
+  transform: translateX(-50%);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  background: var(--danger-color);
+  color: var(--dialog-text-white-color);
+  font-size: var(--ui-small-text-size);
+  filter: var(--dialog-shadow);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-duration) var(--transition-function);
+  max-width: min(90vw, 36rem);
+  text-align: center;
+}
+
+.ukmm-import-error.visible {
+  opacity: 1;
+  pointer-events: auto;
+}

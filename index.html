@@ -31,6 +31,13 @@
             <a class="description" id="export-docs" href="" target="_blank"></a>
           </div>
           <div class="sidebar-section">
+            <h2>Import</h2>
+            <button class="action" id="ukmm-import-btn" title="Import a ukmmsg2json JSON file">
+              Import UKMM
+            </button>
+            <input type="file" id="ukmm-file-input" accept=".json" hidden />
+          </div>
+          <div class="sidebar-section">
             <h2>About</h2>
             <p class="warning-modal description">
               Please report any issues and send feedback to the Zelda BOTW/TOTK Modding Hub Discord servers (mention @lisa_wolfgang) or use
@@ -41,6 +48,16 @@
             <a href="pages/licenses.html" target="_blank" title="Open licenses page">Licenses</a>
             <a href="https://github.com/lisa-wolfgang/Bubble-Wrap" target="_blank" title="Open GitHub repository">GitHub</a>
           </div>
+        </div>
+        <!-- UKMM import side panel -->
+        <div id="ukmm-import-panel" class="ukmm-import-panel">
+          <div class="ukmm-import-panel-header">
+            <h2 class="ukmm-import-title">Loading...</h2>
+            <span class="ukmm-import-count"></span>
+            <button class="ukmm-import-change" id="ukmm-import-change" title="Load a different file">Change file</button>
+            <button class="ukmm-import-close" id="ukmm-import-close" title="Close">&times;</button>
+          </div>
+          <div class="ukmm-import-tree"></div>
         </div>
         <div class="editor">
           <div class="editor-section editor-header">
@@ -66,6 +83,8 @@
         </div>
       </div>
     </div>
+    <div id="ukmm-import-error" class="ukmm-import-error"></div>
+
     <script type="module" src="scripts/index.js"></script>
   </body>
 </html>
